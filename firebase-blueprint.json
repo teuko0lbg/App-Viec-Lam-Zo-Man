@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "Company": {
+      "title": "Company",
+      "description": "Recruitment company details, salary, benefits, and logo",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "shortName": { "type": "string" },
+        "industry": { "type": "string" },
+        "employmentType": { "type": "string" },
+        "educationReq": { "type": "string" },
+        "contractType": { "type": "string" },
+        "logoText": { "type": "string" },
+        "logoBgColor": { "type": "string" },
+        "logoTextColor": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "badge": { "type": "string" },
+        "hidden": { "type": "boolean" },
+        "location": { "type": "string" },
+        "industrialPark": { "type": "string" },
+        "salaryRange": { "type": "string" },
+        "minSalary": { "type": "number" },
+        "maxSalary": { "type": "number" },
+        "basicSalary": { "type": "string" },
+        "basicSalaryNum": { "type": "number" },
+        "attendanceBonus": { "type": "string" },
+        "attendanceBonusNum": { "type": "number" },
+        "allowances": { "type": "array" },
+        "benefits": { "type": "array" },
+        "positions": { "type": "array" },
+        "mapsUrl": { "type": "string" },
+        "bonusProgram": { "type": "object" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "shortName"]
+    },
+    "AppSettings": {
+      "title": "AppSettings",
+      "description": "Global application branding, hotline and ZôMan logo",
+      "type": "object",
+      "properties": {
+        "appTitle": { "type": "string" },
+        "appSubtitle": { "type": "string" },
+        "hotline": { "type": "string" },
+        "customLogo": { "type": "string" },
+        "botWelcomeMessage": { "type": "string" },
+        "botSystemPrompt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["appTitle", "hotline"]
+    },
+    "ConsultationApplication": {
+      "title": "ConsultationApplication",
+      "description": "Job application submitted by candidate",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "companyName": { "type": "string" },
+        "positionTitle": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "birthYear": { "type": "number" },
+        "hasCccd": { "type": "boolean" },
+        "appliedDate": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "phone", "companyId"]
+    },
+    "ChatFaqItem": {
+      "title": "ChatFaqItem",
+      "description": "AI consultant Q&A knowledge base",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string" },
+        "keywords": { "type": "array" },
+        "answer": { "type": "string" },
+        "category": { "type": "string" }
+      },
+      "required": ["id", "question", "answer"]
+    },
+    "AdminCredentials": {
+      "title": "AdminCredentials",
+      "description": "Master administrative credentials and recovery PIN",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "recoveryKey": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["username", "password"]
+    }
+  },
+  "firestore": {
+    "/companies/{companyId}": {
+      "schema": "Company",
+      "description": "Recruitment companies database"
+    },
+    "/settings/app": {
+      "schema": "AppSettings",
+      "description": "Global app configuration and branding"
+    },
+    "/applications/{appId}": {
+      "schema": "ConsultationApplication",
+      "description": "Candidate job applications"
+    },
+    "/faq/{faqId}": {
+      "schema": "ChatFaqItem",
+      "description": "AI Consultant FAQ knowledge base"
+    },
+    "/system/credentials": {
+      "schema": "AdminCredentials",
+      "description": "Admin login and recovery PIN"
+    }
+  }
+}

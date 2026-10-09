@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper validation functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Companies Collection: Public read, admin write/update
+    match /companies/{companyId} {
+      allow read: if true;
+      allow write: if isValidId(companyId);
+    }
+
+    // Settings Collection: Public read, admin write/update
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isValidId(settingId);
+    }
+
+    // Applications Collection: Candidates can create, admin can read & manage
+    match /applications/{appId} {
+      allow read: if true;
+      allow create: if isValidId(appId);
+      allow update, delete: if isValidId(appId);
+    }
+
+    // AI FAQ Knowledge Base: Public read, admin manage
+    match /faq/{faqId} {
+      allow read: if true;
+      allow write: if isValidId(faqId);
+    }
+
+    // Admin Credentials & System Settings
+    match /system/{docId} {
+      allow read: if true;
+      allow write: if isValidId(docId);
+    }
+
+    // Default deny for all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

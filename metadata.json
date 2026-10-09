@@ -1,0 +1,6 @@
+{
+  "name": "Việc Làm Phổ Thông - Tuyển Dụng Lao Động Bắc Ninh - Bắc Giang",
+  "description": "Nền tảng tìm việc làm lao động phổ thông, thời vụ, hành chính khu vực Bắc Ninh - Bắc Giang. Xem chi tiết lương, phụ cấp, thưởng chuyên cần và đăng ký tư vấn trực tiếp miễn phí.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
